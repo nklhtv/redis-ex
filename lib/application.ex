@@ -2,11 +2,12 @@ defmodule Redis.Application do
   use Application
 
   def start(_type, _args) do
-    children = [
-      RedisSupervisor
-    ]
-
-    opts = [strategy: :one_for_one, name: __MODULE__]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(
+      [
+        RedisSupervisor
+      ],
+      strategy: :one_for_one,
+      name: __MODULE__
+    )
   end
 end
