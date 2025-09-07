@@ -1,21 +1,59 @@
-# Redis
+# Redis-Ex
 
-**TODO: Add description**
+A minimal Redis-like server written in Elixir. It supports basic commands and listens for TCP connections on port 6379.
 
-## Installation
+## Features
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `redis` to your list of dependencies in `mix.exs`:
+- In-memory key-value store
+- Supports `PING`, `SET`, `GET`, `EXPIRE` and `PERSIST` commands
+- TCP server compatible with Redis CLI clients
+- Supervised architecture for reliability
 
-```elixir
-def deps do
-  [
-    {:redis, "~> 0.1.0"}
-  ]
-end
+## Getting Started
+
+### Prerequisites
+
+- Elixir 1.12+
+
+### Running the Server
+
+Start the application:
+
+```sh
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/redis>.
+This will start the Redis-like server and listen on port 6379.
 
+### Usage
+
+You can use `redis-cli` to connect:
+
+```bash
+$ redis-cli -p 6379
+> PING
+PONG
+> SET foo bar
+OK
+> GET foo
+bar
+```
+
+Or you can execute redis commands in iex:
+
+```iex
+iex(1)> Redis.execute(["PING"])
+:pong
+iex(2)> Redis.execute(["SET", "foo", "bar"])
+:ok
+iex(3)> Redis.execute(["GET", "foo"])
+"bar"
+```
+
+#### Supported Commands
+
+- `PING` — returns `PONG`
+- `SET key value` — stores a string value
+- `GET key` — retrieves a value
+- `EXPIRE key seconds` — sets a key to expire
+- `PERSIST key` — removes the expiration from a key
