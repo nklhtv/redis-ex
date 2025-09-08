@@ -16,7 +16,7 @@ defmodule Redis do
 
   def execute(["PERSIST", key]), do: GenServer.cast(__MODULE__, {:persist, key})
 
-  def execute(command), do: {:error, :unknown_command, command}
+  def execute(_command), do: {:error, :unknown_command}
 
   @impl true
   def init(initial_data) do
