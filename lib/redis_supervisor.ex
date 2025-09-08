@@ -7,7 +7,8 @@ defmodule RedisSupervisor do
   def init(_init_arg) do
     Supervisor.init(
       [
-        {Redis, %{}}
+        {Redis, %{}},
+        {RedisTCPServer, []}
       ],
       strategy: :one_for_one
     )
