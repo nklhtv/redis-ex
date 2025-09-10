@@ -2,6 +2,8 @@
 
 A minimal Redis-like server written in Elixir. It supports basic commands and listens for TCP connections on port 6379.
 
+**Note:** This is a coding challenge I tackled for fun and to learn Elixir better.
+
 ## Features
 
 - In-memory key-value store
