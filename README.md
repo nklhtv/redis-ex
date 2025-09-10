@@ -5,9 +5,8 @@ A minimal Redis-like server written in Elixir. It supports basic commands and li
 ## Features
 
 - In-memory key-value store
+- TCP server compatible with Redis CLI clients, following the [Redis Protocol specification](https://redis-doc-test.readthedocs.io/en/latest/topics/protocol/)
 - Supports `PING`, `SET`, `GET`, `EXPIRE` and `PERSIST` commands
-- TCP server compatible with Redis CLI clients
-- Supervised architecture for reliability
 
 ## Getting Started
 
